@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     
     public void TakeDamage(int damage)
     {
+        print("123");
         health -= damage;
         if (health <= 0)
         {
