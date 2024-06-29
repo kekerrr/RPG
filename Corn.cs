@@ -15,9 +15,6 @@ public class Corn : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        if (hp <= 0)
-        {
-            print("кукуруза меньше 0 хп");
-        }
+
     }
 }

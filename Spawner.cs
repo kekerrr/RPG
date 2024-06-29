@@ -10,19 +10,24 @@ public class Spawner : MonoBehaviour
     public float spawnIntervalMax = 2;
     public float spawnIntervalMin = 1;
     public float spawnTimer = 0;
+    public int enemyCount = 5;
 
     public void Spawn()
     {
         Vector2 posSpawn = new Vector2(gameObject.transform.position.x, Random.Range(botBorder.position.y, topBorder.position.y));
         Instantiate(enemyPrefabe, posSpawn, Quaternion.identity);
+        enemyCount -= 1;
     }
 
     public void Update()
     {
         if (spawnTimer <= 0)
         {
-            Spawn();
-            spawnTimer = Random.Range(spawnIntervalMin, spawnIntervalMax);
+            if (enemyCount > 0)
+            {
+                Spawn();
+                spawnTimer = Random.Range(spawnIntervalMin, spawnIntervalMax);
+            }
         }
         else
         {
