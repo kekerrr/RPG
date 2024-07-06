@@ -5,12 +5,14 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health = 10;
-    public int speed = 1;
+    public float speed = 1;
     public float borderPosX;
     public Animator animator;
     public int damage = 5;
     public float hitInterval = 1;
     public float hitTimer = 0;
+    public float addSpeed = 0.1f;
+    public float maxSpeed = 2f;
 
     void Update()
     {
@@ -46,6 +48,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         borderPosX = Corn.singleton.transform.position.x;
+        speed += addSpeed * LevelController.level;
+        if (speed > 2)
+        {
+            speed = 2;
+        }
     }
 
     public void DealDamage()

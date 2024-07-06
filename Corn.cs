@@ -14,7 +14,9 @@ public class Corn : MonoBehaviour
     
     public void TakeDamage(int damage)
     {
-        hp -= damage;
-
+        if (hp > 0)
+        {
+            hp -= damage;
+        }
     }
 }

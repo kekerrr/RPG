@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     public float spawnIntervalMin = 1;
     public float spawnTimer = 0;
     public int enemyCount = 5;
+    public int spawnAddLevelMax = 7;
+    public int spawnAddLevelMin = 3;
 
     public void Spawn()
     {
@@ -23,7 +25,7 @@ public class Spawner : MonoBehaviour
     {
         if (spawnTimer <= 0)
         {
-            if (enemyCount > 0)
+            if (enemyCount > 0 & LevelController.finish == false)
             {
                 Spawn();
                 spawnTimer = Random.Range(spawnIntervalMin, spawnIntervalMax);
@@ -32,6 +34,15 @@ public class Spawner : MonoBehaviour
         else
         {
             spawnTimer -= Time.deltaTime;
+        }
+    }
+
+    public void Start()
+    {
+        for (int i = 1; i < LevelController.level; i++)
+        {
+            int addLevel = Random.Range(spawnAddLevelMin, spawnAddLevelMin);
+            enemyCount += addLevel;
         }
     }
 }

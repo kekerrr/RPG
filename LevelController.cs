@@ -5,20 +5,34 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public Spawner spawner;
+    public static bool finish = false;
+    public static int level = 1;
+
+    public void Start()
+    {
+        finish = false;
+    }
     
     public void Victory()
     {
         print("You Victory");
+        finish = true;
+        level += 1;
     }
 
     public void Defeat()
     {
         print("You Defeat");
+        finish = true;
+        level = 1;
     }
 
     void Update()
     {
-        Check();
+        if (finish == false)
+        {
+            Check();
+        }
     }
 
     public void Check()
